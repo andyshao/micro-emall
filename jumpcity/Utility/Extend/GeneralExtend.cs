@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,42 @@ namespace Jumpcity.Utility.Extend
     /// </summary>
     public static class General
     {
+        /// <summary>
+        /// 检测指定的字符串对象是否符合指定正则表达式的匹配
+        /// </summary>
+        /// <param name="input">要检测的字符串值</param>
+        /// <param name="expression">用于匹配的正则表达式</param>
+        /// <returns>匹配成功返回True，匹配失败或为空字符串返回False</returns>
+        public static bool IsMatch(string input, string expression)
+        {
+            if (General.IsNullable(input))
+                return false;
+
+            Regex rx = new Regex(expression);
+            return rx.Match(input).Success;
+            
+        }
+
+        /// <summary>
+        /// 检测指定字符串对象是否为一个中国地区的手机号码。
+        /// </summary>
+        /// <param name="input">要检测的字符串对象</param>
+        /// <returns>匹配成功返回True，匹配失败或为空字符串返回False</returns>
+        public static bool IsMobile(string input)
+        {
+            return IsMatch(input, @"^(13|14|15|17|18)\d{9}$");
+        }
+
+        /// <summary>
+        /// 检测指定字符串对象是否为一个key=value的参数形式。
+        /// </summary>
+        /// <param name="input">要检测的字符串对象</param>
+        /// <returns>匹配成功返回True，匹配失败或为空字符串返回False</returns>
+        public static bool IsQuery(string input)
+        {
+            return IsMatch(input, @"^[a-zA-Z_]\w*\=\w+$");  
+        }
+
         /// <summary>
         /// 如果是空字符串，则用指定的字符串替代，该方法是扩展方法。
         /// </summary>
