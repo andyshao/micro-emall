@@ -58,6 +58,18 @@ namespace Jumpcity.SMS
         }
 
         /// <summary>
+        /// 发送指定的短信内容
+        /// </summary>
+        /// <param name="mobileNumbers">接收短信内容的手机号码</param>
+        /// <param name="content">要发送的短信内容</param>
+        /// <param name="delay">设置发送延迟的时间(分钟)，零代表立即发送</param>
+        /// <returns>返回服务器响应的结果对象</returns>
+        public Result Send(string mobileNumbers, string content, int delay = 0)
+        {
+            return Send(new List<string> { mobileNumbers }, content, delay);
+        }
+
+        /// <summary>
         /// 用于封装助通短信平台服务器返回的结果集
         /// </summary>
         [Serializable]

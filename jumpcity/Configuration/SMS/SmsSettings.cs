@@ -10,6 +10,9 @@ namespace Jumpcity.Configuration.SMS
     [Serializable]
     public sealed class SmsSettings : ConfigurationElement
     {
+        /// <summary>
+        /// 获取或设置短信服务平台所提供的服务主机地址
+        /// </summary>
         [ConfigurationProperty("host", IsRequired = true)]
         public string Host
         {
@@ -17,8 +20,10 @@ namespace Jumpcity.Configuration.SMS
             set { this["host"] = value; }
         }
 
+        /// <summary>
+        /// 获取或设置批量发送短信时所支持的接收手机号码最大值
+        /// </summary>
         [ConfigurationProperty("maxMobileLength", IsRequired = false)]
-        [IntegerValidator(MinValue = 1)]
         public int MaxMobileLength
         {
             get 
@@ -29,8 +34,10 @@ namespace Jumpcity.Configuration.SMS
             set { this["maxMobileLength"] = value; }
         }
 
+        /// <summary>
+        /// 获取或设置发送短信内容所支持的最大字节数
+        /// </summary>
         [ConfigurationProperty("maxContentLength", IsRequired = false)]
-        [IntegerValidator(MinValue = 1)]
         public int MaxContentLength
         {
             get
@@ -41,17 +48,9 @@ namespace Jumpcity.Configuration.SMS
             set { this["maxContentLength"] = value; }
         }
 
-        [ConfigurationProperty("encoding", IsRequired = false)]
-        public Encoding ContentEncoding
-        {
-            get
-            {
-                string encoding = this["encoding"] as string;
-                return encoding != null ? Encoding.GetEncoding(encoding) : Encoding.UTF8;
-            }
-            set { this["encoding"] = value; }
-        }
-
+        /// <summary>
+        /// 获取或设置发送短信所需的签名
+        /// </summary>
         [ConfigurationProperty("sign", IsRequired = false)]
         public string Sign
         {
