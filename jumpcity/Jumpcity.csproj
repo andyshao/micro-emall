@@ -76,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationManager.cs" />
+    <Compile Include="Configuration\SMS\SmsRequestParameters.cs" />
+    <Compile Include="Configuration\SMS\SmsSendFunction.cs" />
     <Compile Include="IO\FileHelper.cs" />
     <Compile Include="IO\FileUpload.cs" />
     <Compile Include="Net\NetClient.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Office\Excel\ExcelManager.cs" />
     <Compile Include="Configuration\SMS\SmsSettings.cs" />
     <Compile Include="Configuration\SMS\SmsSection.cs" />
+    <Compile Include="SMS\SmsAdapter.cs" />
     <Compile Include="Utility\Extend\DateTimeExtend.cs" />
     <Compile Include="Utility\Extend\ExcelExtend.cs" />
     <Compile Include="Utility\Extend\WebControlsExtend.cs" />
@@ -101,10 +104,7 @@
     <Compile Include="Rest\Client\Result.cs" />
     <Compile Include="Rest\Service\Result.cs" />
     <Compile Include="Rest\Service\BaseService.cs" />
-    <Compile Include="SMS\Base\SMSConnector.cs" />
-    <Compile Include="SMS\Base\SendResult.cs" />
-    <Compile Include="SMS\QXTSMS\QXTSMSConnector.cs" />
-    <Compile Include="SMS\ZTSMS\ZTSMSConnector.cs" />
+    <Compile Include="SMS\ZTSmsAdapter.cs" />
     <Compile Include="Utility\Encryption.cs" />
     <Compile Include="Utility\Enums.cs" />
     <Compile Include="Utility\Extend\CollectionsExtend.cs" />

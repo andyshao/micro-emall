@@ -10,20 +10,6 @@ namespace Jumpcity.Configuration.SMS
     [Serializable]
     public sealed class SmsSettings : ConfigurationElement
     {
-        [ConfigurationProperty("userName", IsRequired = true)]
-        public string UserName
-        {
-            get { return this["userName"] as string; }
-            set { this["userName"] = value; }
-        }
-
-        [ConfigurationProperty("password", IsRequired = false)]
-        public string Password
-        {
-            get { return this["password"] as string; }
-            set { this["password"] = value; }
-        }
-
         [ConfigurationProperty("host", IsRequired = true)]
         public string Host
         {
@@ -61,7 +47,7 @@ namespace Jumpcity.Configuration.SMS
             get
             {
                 string encoding = this["encoding"] as string;
-                return encoding != null ? Encoding.GetEncoding(encoding) : Encoding.Default;
+                return encoding != null ? Encoding.GetEncoding(encoding) : Encoding.UTF8;
             }
             set { this["encoding"] = value; }
         }
